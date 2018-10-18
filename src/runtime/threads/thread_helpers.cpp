@@ -311,7 +311,7 @@ namespace hpx { namespace threads
         if (&ec != &throws)
             ec = make_success_code();
 
-        return id ? id->get_lco_description() : "<unknown>";
+        return id->get_lco_description();
     }
 
     util::thread_description set_thread_lco_description(
@@ -328,9 +328,7 @@ namespace hpx { namespace threads
         if (&ec != &throws)
             ec = make_success_code();
 
-        if (id)
-            return id->set_lco_description(desc);
-        return nullptr;
+        return id->set_lco_description(desc);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -351,7 +349,7 @@ namespace hpx { namespace threads
         if (&ec != &throws)
             ec = make_success_code();
 
-        return id ? id->get_backtrace() : nullptr;
+        return id->get_backtrace();
     }
 
 #ifdef HPX_HAVE_THREAD_FULLBACKTRACE_ON_SUSPENSION
@@ -372,7 +370,7 @@ namespace hpx { namespace threads
         if (&ec != &throws)
             ec = make_success_code();
 
-        return id ? id->set_backtrace(bt) : nullptr;
+        return id->set_backtrace(bt);
     }
 
     threads::executors::current_executor
