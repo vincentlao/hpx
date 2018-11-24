@@ -9,7 +9,6 @@
 #define HPX_UTIL_DETAIL_VTABLE_UNIQUE_FUNCTION_VTABLE_HPP
 
 #include <hpx/config.hpp>
-#include <hpx/util/detail/empty_function.hpp>
 #include <hpx/util/detail/vtable/callable_vtable.hpp>
 #include <hpx/util/detail/vtable/vtable.hpp>
 #include <hpx/util/invoke.hpp>
@@ -24,13 +23,10 @@ namespace hpx { namespace util { namespace detail
     struct unique_function_vtable
       : vtable, callable_vtable<Sig>
     {
-        bool empty;
-
         template <typename T>
         HPX_CONSTEXPR unique_function_vtable(construct_vtable<T>) noexcept
           : vtable(construct_vtable<T>())
           , callable_vtable<Sig>(construct_vtable<T>())
-          , empty(std::is_same<T, empty_function<Sig> >::value)
         {}
     };
 }}}

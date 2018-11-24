@@ -30,7 +30,7 @@ namespace hpx { namespace util { namespace detail
         serializable_function_vtable(construct_vtable<T>) noexcept
           : VTable(construct_vtable<T>())
           , serializable_vtable(construct_vtable<T>())
-          , name(this->empty ? "empty" : get_function_name<VTable, T>())
+          , name(get_function_name<VTable, T>())
         {
             hpx::serialization::detail::polymorphic_intrusive_factory::instance().
                 register_class(name, &serializable_function_vtable::get_vtable<T>);
